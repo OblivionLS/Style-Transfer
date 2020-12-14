@@ -32,9 +32,9 @@ function setup() {
 
   // Create a new Style Transfer method with a defined style.
   // We give the video as the second argument
-  style1 = ml5.styleTransfer('/models/fauvism', video, modelLoaded);
-  style2 = ml5.styleTransfer('/models/udnie', video, modelLoaded);
- style3 = ml5.styleTransfer('/models/mathura', video, modelLoaded);
+  style1 = ml5.styleTransfer('./models/fauvism', video, modelLoaded);
+  style2 = ml5.styleTransfer('./models/udnie', video, modelLoaded);
+ style3 = ml5.styleTransfer('./models/mathura', video, modelLoaded);
   select('#startStop').mousePressed(start);
 
   select('#style1').mousePressed(styleOne);
