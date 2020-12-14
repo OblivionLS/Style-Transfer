@@ -77,11 +77,11 @@ function start(){
       select('#startStop').html('Paint me again!');
 
 
-      setTimeout(startStop, 50);
+      setTimeout(startStop, 80);
     }else {
       document.getElementById("loading").style.opacity = 0;
 
-      setTimeout(startStop, 50);
+      setTimeout(startStop, 80);
     }
 
   }
