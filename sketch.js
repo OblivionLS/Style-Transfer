@@ -35,11 +35,13 @@ function setup() {
   style1 = ml5.styleTransfer('./models/fauvism', video, modelLoaded);
   style2 = ml5.styleTransfer('./models/udnie', video, modelLoaded);
  style3 = ml5.styleTransfer('./models/mathura', video, modelLoaded);
+  style4 = ml5.styleTransfer('./models/vangogh', video, modelLoaded);
   select('#startStop').mousePressed(start);
 
   select('#style1').mousePressed(styleOne);
   select('#style2').mousePressed(styleTwo);
   select('#style3').mousePressed(styleThree);
+  select('#style4').mousePressed(styleFour);
 
 }
 
@@ -66,7 +68,10 @@ function styleThree(){
   style = style3;
   select('#status').html('Changed Style to nr 3');
 }
-
+function styleFour(){
+  style = style4;
+  select('#status').html('Changed Style to nr 4');
+}
 
 function start(){
   if(style == null){
