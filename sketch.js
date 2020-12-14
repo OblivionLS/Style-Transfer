@@ -77,11 +77,11 @@ function start(){
       select('#startStop').html('Paint me again!');
 
 
-        setTimeout(startStop, 10);
+      setTimeout(startStop, 50);
     }else {
       document.getElementById("loading").style.opacity = 0;
 
-      setTimeout(startStop, 10);
+      setTimeout(startStop, 50);
     }
 
   }
@@ -112,6 +112,7 @@ function gotResult(err, img) {
   resultImg.attribute('src', img.src);
 
   document.getElementById("loading").style.opacity = 0;
+
   gotImage = true;
 //  if (isTransferring) {
   //  style.transfer(gotResult);
