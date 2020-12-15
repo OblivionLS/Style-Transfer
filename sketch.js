@@ -27,7 +27,7 @@ function setup() {
   video.hide();
 
   // The results image from the style transfer
-  resultImg = createImg('').parent('style');
+  resultImg = createImg('').parent('frame');
   resultImg.hide();
 
   // Create a new Style Transfer method with a defined style.
