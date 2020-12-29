@@ -8,8 +8,6 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
-
 We found that using colab notebook to train the model was the easiest way of making it work.
 
 Setup the Notebook
@@ -17,9 +15,7 @@ Setup the Notebook
 %tensorflow_version 2.x
 ```
 
-### Installing
-
-A step by step series of examples that tell you how to get a development env running
+### Utilization
 
 After setting up a new colab notebook with tensorflow 2.x, clone the fast style transfer repo
 ```
@@ -39,58 +35,80 @@ Cleanup and creating directories for later
 !mkdir tests
 ```
 
+Upload your style and test image and change the paths below.
+```
+#@title Parameters
+style_img = ''  #@param
+test_img = ''  #@param
+ckpt_dir = ''  #@param
+test_dir = ''  #@param
+ckpt_iterations = 2000  #@param {type: "number"}
+batch_size = 20   #@param {type: "number"}
+epochs = 2 #@param {type: "number"}
+```
+
+Now we can run style.py with our parameters
+```
+!python style.py --style {style_img} \
+  --checkpoint-dir {ckpt_dir} \
+  --test {test_img} \
+  --test-dir {test_dir} \
+  --checkpoint-iterations {str(ckpt_iterations)} \
+  --batch-size {str(batch_size)} \
+  --epochs {str(epochs)} \
+  --content-weight 1.5e1
+  ```
+
+At this point the model is trained and our checkpoint folder will contain several files. It would be wise to save the checkpoint folder.
+
+To convert our model to  ML5.js follow those steps:
+```
+%tensorflow_version 1.x
+```
+
+```
+%cd /content
+!git clone https://github.com/reiinakano/fast-style-transfer-deeplearnjs.git
+```
+
+```
+%cd /content
+!git clone https://github.com/reiinakano/fast-style-transfer-deeplearnjs.git
+```
+
+```
+%cd fast-style-transfer-deeplearnjs
+```
+
+```
+#@title Parameters
+output_dir = 'outputfolder'  #@param
+ckpt_file = '/content/fast-style-transfer/ckpts/fns.ckpt'  #@param
+```
+
+```
+!mkdir {output_dir}
+!python scripts/dump_checkpoint_vars.py --output_dir={output_dir} --checkpoint_file={ckpt_file}
+!python scripts/remove_optimizer_variables.py --output_dir={output_dir}
+```
+
+Now lets create a ZIP for easier download
+```
+!zip -r /content/fast-style-transfer-deeplearnjs/{output_dir}/model.zip /content/fast-style-transfer-deeplearnjs/{output_dir}
+```
+
+
 End with an example of getting some data out of the system or using it for a little demo
 
-## Running the tests
 
-Explain how to run the automated tests for this system
+## References
 
-### Break down into end to end tests
+* [yining1023](https://github.com/yining1023/fast_style_transfer_in_ML5) 
+* [reiinakano](https://github.com/reiinakano/fast-style-transfer-deeplearnjs)
+* [tf.js](https://magenta.tensorflow.org/blog/2018/12/20/style-transfer-js/)
 
-Explain what these tests test and why
 
-```
-Give an example
-```
+## Students
 
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* [OblivionLS](https://github.com/OblivionLS)
+* [De-eL](https://github.com/De-eL)
