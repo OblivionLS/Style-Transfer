@@ -72,11 +72,6 @@ To convert our model to  ML5.js follow those steps:
 ```
 
 ```
-%cd /content
-!git clone https://github.com/reiinakano/fast-style-transfer-deeplearnjs.git
-```
-
-```
 %cd fast-style-transfer-deeplearnjs
 ```
 
