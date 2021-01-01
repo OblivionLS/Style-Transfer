@@ -93,9 +93,6 @@ Now lets create a ZIP for easier download
 ```
 
 
-End with an example of getting some data out of the system or using it for a little demo
-
-
 ## References
 
 * [yining1023](https://github.com/yining1023/fast_style_transfer_in_ML5) 
